@@ -6,9 +6,9 @@ criteria remain in [`plan.md`](plan.md).
 
 ## Status snapshot
 
-- **Milestone:** M0 — E0 complete; E1 design-system stories are planned and not started.
-- **Branch:** published `xcalibur` branch at `85876b3` (`94d66ed` scaffold plus the CI formatting fix); origin is `https://github.com/s4njee/xsaber`. Root registration and pinning remain `E17-S1` work.
-- **Last 5 commits:** `85876b3` Scope formatting check to xsaber; `94d66ed` Scaffold xsaber workspace.
+- **Milestone:** M0 — E0 complete; E1 design-system work is in progress.
+- **Branch:** published `xcalibur` branch at `9ccd066` (E1 theme foundation); origin is `https://github.com/s4njee/xsaber`. Root registration and pinning remain `E17-S1` work.
+- **Last 5 commits:** `9ccd066` Add E1 theme foundation; `80d4cce` Bundle E1 font assets; `33ff656` Record E0 completion evidence; `85876b3` Scope formatting check to xsaber; `94d66ed` Scaffold xsaber workspace.
 - **Test gate:** the clean recursive suite checkout at `/tmp/xsaber-e0-clean.83Ddis` built and tested xsaber against the published suite xsync pin, with 4 engine tests passing. Local build/test, workspace-scoped fmt, clippy, `cargo deny check`, `cargo audit`, release-mode app build, `actionlint`, and `git diff --check` pass on 2026-09-08. GitHub CI run [34194549604](https://github.com/s4njee/xsaber/actions/runs/34194549604) passed its macOS and Ubuntu Rust jobs, supply-chain job, and macOS/Ubuntu release app builds; the Windows job reported the known `xsync-core` `rustix::fs` failure and is allowed by E0 until `E16-S4`. The package job is a release-mode app compilation, not native bundle verification.
 - **Not gated:** `E17-S1` submodule registration, `.gitmodules`, and the superproject SHA pin; native bundles remain E16 work and native Windows packaging remains `E16-S4`.
 
@@ -40,8 +40,8 @@ pin.
 
 | Story | Status |
 |---|---|
-| `E1-S1` Theme | Planned |
-| `E1-S2` Fonts | Planned |
+| `E1-S1` Theme | In progress — theme asset, typed app tokens, and `ThemeSet` JSON round-trip test landed in `9ccd066`; startup registry loading remains. |
+| `E1-S2` Fonts | In progress — OFL font assets and provenance landed in `80d4cce`; `AssetSource`, font registration, and fallback-independent render proof remain. |
 | `E1-S3` Icons and wordmark | Planned |
 | `E1-S4` Density primitives | Planned |
 | `E1-S5` Window chrome and menus | Planned |

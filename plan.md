@@ -136,7 +136,7 @@ builds only inside the superproject, like excalibur; `README.md` says so.
 
 | Milestone | Story | Status |
 |---|---|---|
-| M0 | E0-S1 … E0-S6, E1-S1 … E1-S6 | E0 complete; E1 is planned and not started |
+| M0 | E0-S1 … E0-S6, E1-S1 … E1-S6 | E0 complete; E1-S1 and E1-S2 are in progress |
 | M1 | E2, E3, E4, E5, E8, E9, E11-S1 … S3 | Not started |
 | M2 | E6, E10-S1 … S3 | Not started |
 | M3 | E7 | Not started |
@@ -150,7 +150,11 @@ the `xcalibur` branch at `85876b3`, and the clean recursive suite checkout
 `https://github.com/s4njee/xsaber/actions/runs/34194549604` passed the macOS and
 Ubuntu Rust, supply-chain, and release app jobs; Windows reported the known
 `xsync-core` `rustix::fs` failure allowed by E0 until E16-S4. Root registration
-and the superproject pin remain E17-S1 work. E1 is planned and has not started.
+and the superproject pin remain E17-S1 work. E1-S1 and E1-S2 are in progress:
+`9ccd066` provides the theme asset, typed tokens, and a `ThemeSet` JSON
+round-trip test; `80d4cce` provides the licensed local font assets and
+provenance. Theme-registry startup loading, font `AssetSource` registration,
+and the fallback-independent rendering proof remain open.
 
 ---
 

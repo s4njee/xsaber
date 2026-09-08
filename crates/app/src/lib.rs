@@ -48,6 +48,9 @@ mod theme_tests {
             serde_json::from_str(&encoded).expect("round-trip GPUI Kit ThemeSet");
         assert_eq!(round_tripped.themes.len(), 1);
         assert_eq!(round_tripped.themes[0].name.as_ref(), "xsaber dark");
-        assert_eq!(round_tripped.themes[0].mode, gpui_kit::component::ThemeMode::Dark);
+        assert_eq!(
+            round_tripped.themes[0].mode,
+            gpui_kit::component::ThemeMode::Dark
+        );
     }
 }
