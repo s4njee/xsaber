@@ -19,3 +19,7 @@ tracing = "0.1"
 tracing-appender = "0.2"
 tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
 zeroize = { version = "1.8", features = ["alloc"] }
+base64 = "0.22"
+sha2 = "0.10"
+russh = { version = "=0.63.2", default-features = false, features = ["flate2", "ring", "rsa"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "sync", "time"] }
