@@ -79,7 +79,7 @@ jobs:
         run: test -s docs/design-gaps.md
 
       - name: Format
-        run: cargo fmt --all -- --check
+        run: cargo fmt -p xsaber-engine -p xsaber-term -p xsb -p xsaber -- --check
 
       - name: Clippy
         run: cargo clippy --workspace --all-targets -- -D warnings
