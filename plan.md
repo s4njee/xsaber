@@ -312,6 +312,10 @@ an `Event` stream (`Connecting(step)`, `HostKey(prompt)`, `Authenticated`,
 - Dropping the last `Session` reference closes the connection; no channel outlives it.
 - The handshake log lines in screen `1c` (`resolved host`, `TCP established`, `Server: …`, `key exchange …`, `Verifying host key …`, `Authenticating …`) are emitted as `Connecting(step)` events with elapsed times.
 
+**Blocker:** The live actor/channel-lifecycle proof requires the `E15-S1`
+in-process SSH server. `cc3a57e` provides the config, bounded events, elapsed
+handshake steps, and lifecycle state it will exercise.
+
 #### E2-S2 — Host-key trust
 Port excalibur's `hostkeys` module: app-private OpenSSH-format file, TOFU
 states Trusted / Unknown / Changed / Revoked, atomic writes, hashed and
@@ -323,6 +327,11 @@ algorithm, then awaits Trust / Trust once / Reject over a oneshot.
 - Trust once does not write the file; Trust does; Reject yields `russh::Error::UnknownKey` mapped to `AuthenticationFailed`.
 - Host certificates (`PublicKeyOrCertificate::Certificate`) are verified against `@cert-authority` entries when present and otherwise treated as Unknown with the CA fingerprint shown.
 
+**Blocker:** `cc3a57e` supplies app-private TOFU, changed/revoked policy, and
+atomic persistence, but the russh callback and certificate-authority verifier
+are not implemented. `@cert-authority` entries are safely skipped until that
+verification path exists.
+
 #### E2-S3 — Authentication ladder
 Order: agent (`AgentClient::connect_env`, Pageant/named pipe on Windows) →
 configured key file (`load_secret_key`, `KeyIsEncrypted` → passphrase prompt,
@@ -333,6 +342,10 @@ Driven by `AuthResult::Failure { remaining_methods, partial_success }`.
 - A server requiring publickey **and** KI (partial_success) authenticates.
 - Secrets pass through `Secret` and are zeroized after use; the test from E0-S6 covers this path.
 
+**Blocker:** `dd069e8` provides the secret-safe ladder and partial-success
+policy, but proving real publickey-plus-KI authentication requires the
+`E15-S1` SSH fixture and russh adapter calls.
+
 #### E2-S4 — `~/.ssh/config`
 `russh-config::parse_home` for `HostName`, `User`, `Port`, `IdentityFile`,
 `ProxyCommand` (via `connect_stream` on `Stream::proxy_command`). `ProxyJump`
@@ -341,6 +354,11 @@ is parsed and reported as unsupported in v1 (`Match` blocks likewise; issue
 **AC**
 - Quick-connecting `sftp://alias` where `alias` is a `Host` block resolves host/user/port/key without the user typing them.
 - A `ProxyJump` entry produces a `Surface::Field` error naming the limitation rather than a silent TCP connect.
+
+**Blocker:** `dd069e8` provides a side-effect-free resolver and explicit
+ProxyJump/Match field errors. Full completion waits on `russh-config::parse_home`
+and `ProxyCommand` stream wiring; the required crate lookup was blocked by a
+transient crates.io DNS failure during this tranche.
 
 #### E2-S5 — Reconnect supervisor
 On `Handler::disconnected` or `Handle::is_closed`, mark the session Degraded

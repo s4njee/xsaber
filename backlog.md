@@ -7,8 +7,8 @@ criteria remain in [`plan.md`](plan.md).
 ## Status snapshot
 
 - **Milestone:** M0 — E0 complete; E1 design-system work is in progress.
-- **Branch:** published `xcalibur` branch at `fa13824` (E1 progress record); origin is `https://github.com/s4njee/xsaber`. Root registration and pinning remain `E17-S1` work.
-- **Last 5 commits:** `fa13824` Record E1 progress; `9ccd066` Add E1 theme foundation; `80d4cce` Bundle E1 font assets; `33ff656` Record E0 completion evidence; `85876b3` Scope formatting check to xsaber.
+- **Branch:** published `xcalibur` branch at `dd069e8` (E2 SSH policy); origin is `https://github.com/s4njee/xsaber`. Root registration and pinning remain `E17-S1` work.
+- **Last 5 commits:** `dd069e8` Add SSH authentication and config policies; `cc3a57e` Add SSH session and host-key foundations; `d8234c3` Clarify completed work and blockers; `fa13824` Record E1 progress; `9ccd066` Add E1 theme foundation.
 - **Test gate:** the clean recursive suite checkout at `/tmp/xsaber-e0-clean.83Ddis` built and tested xsaber against the published suite xsync pin, with 4 engine tests passing. Local build/test, workspace-scoped fmt, clippy, `cargo deny check`, `cargo audit`, release-mode app build, `actionlint`, and `git diff --check` pass on 2026-09-08. GitHub CI run [34194549604](https://github.com/s4njee/xsaber/actions/runs/34194549604) passed its macOS and Ubuntu Rust jobs, supply-chain job, and macOS/Ubuntu release app builds; the Windows job reported the known `xsync-core` `rustix::fs` failure and is allowed by E0 until `E16-S4`. The package job is a release-mode app compilation, not native bundle verification.
 - **Not gated:** `E17-S1` submodule registration, `.gitmodules`, and the superproject SHA pin; native bundles remain E16 work and native Windows packaging remains `E16-S4`.
 
@@ -97,3 +97,13 @@ index keeps their IDs stable while work is sequenced behind M0:
 `E3-S0` and `E17-S2` are prerequisite records, not permission to silently
 change xsync. Their provider/consumer contract is in
 [`integration.md`](integration.md).
+
+## E2 — SSH sessions
+
+| Story | Status |
+|---|---|
+| `E2-S1` Session actor | In progress — `SessionConfig`, bounded event bus, elapsed handshake events, and terminal lifecycle state landed in `cc3a57e`; a live russh actor and E15 concurrent-channel test remain. |
+| `E2-S2` Host-key trust | In progress — app-private TOFU store, atomic writes, revoked/changed-key handling, and SHA-256 fingerprints landed in `cc3a57e`; russh callback wiring and host-certificate CA verification remain. |
+| `E2-S3` Authentication ladder | In progress — typed agent/key/password/KI policy, partial-success continuation, and secret-safe prompt types landed in `dd069e8`; live russh authentication and E15 server proof remain. |
+| `E2-S4` SSH config | In progress — safe, typed Host/HostName/User/Port/IdentityFile/ProxyCommand resolution and explicit ProxyJump/Match errors landed in `dd069e8`; mandated `russh-config::parse_home` and ProxyCommand stream wiring remain. |
+| `E2-S5` Reconnect supervisor | Planned |
