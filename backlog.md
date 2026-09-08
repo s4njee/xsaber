@@ -1,41 +1,40 @@
-# xsaber backlog — open work only
+# xsaber backlog — open work and completed evidence
 
-Status snapshot: 2026-09-08. This file records unfinished work; the original
-story definitions and acceptance criteria remain in [`plan.md`](plan.md).
-No story below is marked Done while the implementation and acceptance evidence
-are being assembled concurrently.
+Status snapshot: 2026-09-08. This file records unfinished work and retains
+completed closure evidence; the original story definitions and acceptance
+criteria remain in [`plan.md`](plan.md).
 
 ## Status snapshot
 
-- **Milestone:** M0 — project scaffold and design system (`E0`, `E1`); not yet gated.
-- **Branch:** local nested repository on `xcalibur`; origin is `https://github.com/s4njee/xsaber`, with no commit or push yet. E0-S1 owns the first publication; root registration and pinning remain `E17-S1` work.
-- **Last 5 commits:** none; the nested repository has no commit yet.
-- **Test gate:** local `build --workspace`, `test --workspace` (2 engine tests), `fmt --all -- --check`, clippy, `cargo deny check` (warnings only), `cargo audit`, and `git diff --check` pass on 2026-09-08. `actionlint` passes locally; GitHub CI has not run. The package job is a release-mode app compilation, not native bundle verification.
-- **Not gated:** E0-S1 remote publication and GitHub CI; `E17-S1` submodule registration, `.gitmodules`, and the superproject SHA pin; native bundles remain E16 work and native Windows packaging remains `E16-S4`.
+- **Milestone:** M0 — E0 complete; E1 design-system stories are planned and not started.
+- **Branch:** published `xcalibur` branch at `85876b3` (`94d66ed` scaffold plus the CI formatting fix); origin is `https://github.com/s4njee/xsaber`. Root registration and pinning remain `E17-S1` work.
+- **Last 5 commits:** `85876b3` Scope formatting check to xsaber; `94d66ed` Scaffold xsaber workspace.
+- **Test gate:** the clean recursive suite checkout at `/tmp/xsaber-e0-clean.83Ddis` built and tested xsaber against the published suite xsync pin, with 4 engine tests passing. Local build/test, workspace-scoped fmt, clippy, `cargo deny check`, `cargo audit`, release-mode app build, `actionlint`, and `git diff --check` pass on 2026-09-08. GitHub CI run [34194549604](https://github.com/s4njee/xsaber/actions/runs/34194549604) passed its macOS and Ubuntu Rust jobs, supply-chain job, and macOS/Ubuntu release app builds; the Windows job reported the known `xsync-core` `rustix::fs` failure and is allowed by E0 until `E16-S4`. The package job is a release-mode app compilation, not native bundle verification.
+- **Not gated:** `E17-S1` submodule registration, `.gitmodules`, and the superproject SHA pin; native bundles remain E16 work and native Windows packaging remains `E16-S4`.
 
-## E0 closure evidence (fill after publication)
+## Completed work: E0 — 2026-09-08
 
-E0 stays open until its local implementation is published and the checks below
-have authoritative evidence. E17-S1 is a separate closure for root
-registration and pinning.
+E0 is complete. E17-S1 is a separate closure for root registration and
+pinning; E0-S1 explicitly excludes changing `.gitmodules` or the superproject
+pin.
 
-- **Published xsaber commit:** _pending E0-S1 push_
-- **Published branch:** `xcalibur`
-- **Clean-checkout build/test evidence:** _pending; record checkout location, toolchain and commands_
-- **GitHub CI run:** _pending; record the run URL and macOS/Linux results plus the reported Windows result_
-- **Package gate evidence:** _pending; record the release-mode app compilation, not a native bundle claim_
-- **Root registration/pinned SHA:** _pending E17-S1; do not use this field to extend E0-S1_
+- **Published revision:** `85876b3` on `xcalibur` at `https://github.com/s4njee/xsaber` (`94d66ed` is the implementation commit).
+- **Clean-checkout evidence:** `/tmp/xsaber-e0-clean.83Ddis`, recursive suite checkout, Rust 1.98.0; workspace build and test passed with 4 engine tests.
+- **Local evidence:** workspace-scoped formatting, clippy with warnings denied, cargo-deny, cargo-audit, release-mode app build, actionlint, and diff check passed.
+- **GitHub evidence:** [run 34194549604](https://github.com/s4njee/xsaber/actions/runs/34194549604) passed macOS/Ubuntu Rust, supply-chain, and macOS/Ubuntu release app jobs. Windows reported the `xsync-core` `rustix::fs` failure; E0 allows that result until `E16-S4`.
+- **Package gate:** macOS and Ubuntu release-mode app compilations passed; this is not native bundle verification.
+- **Root registration/pinned SHA:** pending `E17-S1` and intentionally outside E0.
 
-## E0 — Project scaffold and suite membership
+### E0 story status
 
-| Story | Status | Remaining evidence |
+| Story | Status | Evidence |
 |---|---|---|
-| `E0-S1` Repository and workspace | In progress — locally built/tested | Workspace, toolchain, license and cargo-deny checks pass locally; publish the `xcalibur` branch and record a clean-checkout result. Root registration/pinning is excluded and remains `E17-S1`. |
-| `E0-S2` CI | Implemented locally; unrun remotely | Workflow and actionlint pass locally; GitHub matrix, reported Windows result, and release-mode app compilation remain. Native bundle verification is explicitly E16 work. |
-| `E0-S3` Three live docs | Implemented locally; acceptance open | Live docs and suite orientation are present; final review against the clean published scaffold remains. |
-| `E0-S4` ADRs | Implemented locally; acceptance open | Five ADRs are seeded from plan research; final implementation review remains. |
-| `E0-S5` Design gaps ledger | Implemented locally; ongoing | Seeded deviations are recorded; later departures must append dated rows. |
-| `E0-S6` Logging and diagnostics | Implemented/tested locally; integration evidence open | One local test covers redaction of all three `Secret` kinds in spans; a second covers bounded diagnostics snapshots/subscription. `XSABER_LOG=debug` is implemented in `configured_filter` but is not directly tested yet; global logging integration, in-app sink consumption, and published CI evidence remain. |
+| `E0-S1` Repository and workspace | Done — 2026-09-08 | Published `xcalibur` branch at `85876b3`; clean recursive checkout built/tested with Rust 1.98.0. Root registration/pinning remains `E17-S1`. |
+| `E0-S2` CI | Done — 2026-09-08 | Workflow actionlint and local gates pass; GitHub run 34194549604 passed macOS/Ubuntu Rust, supply-chain, and release app jobs. Windows reported the known allowed `rustix::fs` failure. |
+| `E0-S3` Three live docs | Done — 2026-09-08 | `README.md`, `backlog.md`, `integration.md`, and suite orientation are present and updated with the published evidence. |
+| `E0-S4` ADRs | Done — 2026-09-08 | Five ADRs are present under `docs/decisions/`, covering GPUI Kit, xsync/SFTP, terminal, engine port, and ring. |
+| `E0-S5` Design gaps ledger | Done — 2026-09-08 | Seeded deviations are recorded in `docs/design-gaps.md`; later departures must append dated rows. |
+| `E0-S6` Logging and diagnostics | Done — 2026-09-08 | Four engine tests pass: all three secret kinds are redacted in spans, diagnostics snapshot/subscription is bounded, `XSABER_LOG=debug` raises verbosity, and rolling files are created under app data. |
 
 ## E1 — Design system in GPUI Kit
 

@@ -22,22 +22,25 @@ there by story id.
 
 ## Build and test
 
-The local workspace scaffold is present. Run the following from this directory
-(the `xsync` sibling is required by the path dependency):
+The published workspace scaffold is present. Run the following from this
+directory (the `xsync` sibling is required by the path dependency):
 
 ```bash
 cargo +1.98.0 build --workspace
 cargo +1.98.0 test --workspace
-cargo +1.98.0 fmt --all -- --check
+cargo +1.98.0 fmt -p xsaber-engine -p xsaber-term -p xsb -p xsaber -- --check
 ```
 
-The 2026-09-08 local gate passed `build --workspace`, `test --workspace` (two
-engine tests), `fmt --all -- --check`, `clippy --workspace --all-targets --
--D warnings`, `cargo deny check` (warnings only), `cargo audit`, and
-`git diff --check`. The CI workflow passes local `actionlint` but has not run
-on GitHub. Its package job intentionally compiles the app in release mode; it
-does not produce or verify a native bundle. Bundle tooling and native launch
-checks are E16 work.
+The 2026-09-08 E0 gate passed in a clean recursive suite checkout with Rust
+1.98.0: `build --workspace`, `test --workspace` (4
+engine tests), workspace-scoped formatting, `clippy --workspace --all-targets --
+-D warnings`, `cargo deny check`, `cargo audit`, the release-mode app build,
+`actionlint`, and `git diff --check`. GitHub run [34194549604](https://github.com/s4njee/xsaber/actions/runs/34194549604)
+passed the macOS/Ubuntu Rust and supply-chain jobs and the macOS/Ubuntu release
+app builds. Windows reported the known `xsync-core` `rustix::fs` failure, which
+E0 allows until E16-S4. The package job intentionally compiles the app in
+release mode; it does not produce or verify a native bundle. Bundle tooling and
+native launch checks are E16 work.
 
 The current headless entry point is:
 

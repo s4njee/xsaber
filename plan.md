@@ -7,9 +7,9 @@ xsync v3 as its primary remote protocol over a russh SSH session, with SFTP as
 the fallback. Sixth project in the xcalibur suite.
 
 This is the greenfield planning document. Per suite convention the three live
-documents are `README.md`, `backlog.md` and `integration.md`; `plan.md` exists
-only because nothing has been built yet. Once stories start landing, unfinished
-work moves to `backlog.md` and this file becomes the reference for story ids.
+documents are `README.md`, `backlog.md` and `integration.md`; `plan.md` remains
+the reference for story ids, acceptance criteria and decisions while completed
+and unfinished work is tracked in `backlog.md`.
 
 The design reference is `design_handoff_xsaber_ftp_client/` (five screens,
 `1a`–`1e`). It is reference, not spec (`../AGENTS.md`); deviations are recorded
@@ -136,16 +136,21 @@ builds only inside the superproject, like excalibur; `README.md` says so.
 
 | Milestone | Story | Status |
 |---|---|---|
-| M0 | E0-S1 … E0-S6, E1-S1 … E1-S6 | E0 scaffold is in progress; E1 is not started |
+| M0 | E0-S1 … E0-S6, E1-S1 … E1-S6 | E0 complete; E1 is planned and not started |
 | M1 | E2, E3, E4, E5, E8, E9, E11-S1 … S3 | Not started |
 | M2 | E6, E10-S1 … S3 | Not started |
 | M3 | E7 | Not started |
 | M4 | E12, E13, E11-S4, E10-S4 | Not started |
 | M5 | E14, E15, E16, E17 | Not started |
 
-The E0 scaffold and its local checks exist. The nested checkout is a git
-repository on the `xcalibur` branch, but publication and GitHub CI evidence are
-still pending; root registration and the superproject pin remain E17-S1 work.
+E0 is complete: xsaber is published at `https://github.com/s4njee/xsaber` on
+the `xcalibur` branch at `85876b3`, and the clean recursive suite checkout
+`/tmp/xsaber-e0-clean.83Ddis` built and passed its 4 engine tests with Rust
+1.98.0. GitHub run
+`https://github.com/s4njee/xsaber/actions/runs/34194549604` passed the macOS and
+Ubuntu Rust, supply-chain, and release app jobs; Windows reported the known
+`xsync-core` `rustix::fs` failure allowed by E0 until E16-S4. Root registration
+and the superproject pin remain E17-S1 work. E1 is planned and has not started.
 
 ---
 
