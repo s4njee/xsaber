@@ -1,0 +1,21 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/engine",
+    "crates/term",
+    "crates/cli",
+    "crates/app",
+]
+
+[workspace.package]
+edition = "2024"
+license = "Apache-2.0"
+rust-version = "1.98.0"
+version = "0.1.0"
+authors = ["sanjee"]
+
+[workspace.dependencies]
+tracing = "0.1"
+tracing-appender = "0.2"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+zeroize = { version = "1.8", features = ["alloc"] }

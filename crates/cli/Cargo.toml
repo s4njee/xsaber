@@ -1,0 +1,16 @@
+[package]
+name = "xsb"
+description = "Headless xsaber command-line entry point"
+publish = false
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+version.workspace = true
+
+[dependencies]
+xsaber-engine = { path = "../engine", version = "0.1.0" }
+xsaber-term = { path = "../term", version = "0.1.0" }
+
+[[bin]]
+name = "xsb"
+path = "src/main.rs"

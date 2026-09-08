@@ -1,0 +1,187 @@
+name: CI
+
+on:
+  push:
+    branches: [xcalibur, main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+# xsaber's engine has a path dependency on ../xsync.  The superproject is the
+# supported checkout shape, so every Rust job first checks out xcalibur with
+# recursive submodules.  E17-S1 will add xsaber itself as a submodule; until
+# then (and for PRs before that pin moves) the checkout below overlays the exact
+# xsaber revision that triggered this workflow.
+jobs:
+  rust:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.os == 'windows-latest' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    defaults:
+      run:
+        working-directory: xcalibur/xsaber
+    steps:
+      - name: Check out the suite and recursive dependencies
+        uses: actions/checkout@v4
+        with:
+          repository: s4njee/xcalibur
+          path: xcalibur
+          submodules: recursive
+
+      - name: Overlay the xsaber revision under test
+        shell: bash
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          rm -rf xcalibur/xsaber
+
+      - name: Check out the xsaber revision under test
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: xcalibur/xsaber
+
+      - name: Install Linux GPUI dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            clang \
+            cmake \
+            libfontconfig1-dev \
+            libvulkan-dev \
+            libwayland-dev \
+            libxkbcommon-dev \
+            libxkbcommon-x11-dev \
+            pkg-config
+
+      - uses: dtolnay/rust-toolchain@1.98.0
+        with:
+          components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: xcalibur/xsaber
+
+      - name: Required design-gap ledger exists
+        shell: bash
+        run: test -s docs/design-gaps.md
+
+      - name: Format
+        run: cargo fmt --all -- --check
+
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets -- -D warnings
+
+      - name: Tests
+        run: cargo test --workspace
+
+  supply-chain:
+    name: Supply chain
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: xcalibur/xsaber
+    steps:
+      - name: Check out the suite and recursive dependencies
+        uses: actions/checkout@v4
+        with:
+          repository: s4njee/xcalibur
+          path: xcalibur
+          submodules: recursive
+
+      - name: Overlay the xsaber revision under test
+        shell: bash
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          rm -rf xcalibur/xsaber
+
+      - name: Check out the xsaber revision under test
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: xcalibur/xsaber
+
+      - uses: dtolnay/rust-toolchain@1.98.0
+
+      - uses: taiki-e/install-action@cargo-deny
+      - uses: taiki-e/install-action@cargo-audit
+
+      - name: Cargo deny
+        run: cargo deny check
+
+      - name: Cargo audit
+        run: cargo audit
+
+  package:
+    # This is intentionally an unsigned build check while xsaber is still at
+    # scaffold stage.  E16 will add the platform bundle configuration and can
+    # replace this command with the corresponding bundler invocation; keeping
+    # the job now makes release-mode app compilation a visible gate without
+    # pretending that an app bundle or signing pipeline already exists.
+    name: Unsigned app build
+    needs: rust
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    defaults:
+      run:
+        working-directory: xcalibur/xsaber
+    steps:
+      - name: Check out the suite and recursive dependencies
+        uses: actions/checkout@v4
+        with:
+          repository: s4njee/xcalibur
+          path: xcalibur
+          submodules: recursive
+
+      - name: Overlay the xsaber revision under test
+        shell: bash
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          rm -rf xcalibur/xsaber
+
+      - name: Check out the xsaber revision under test
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: xcalibur/xsaber
+
+      - name: Install Linux GPUI dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            clang \
+            cmake \
+            libfontconfig1-dev \
+            libvulkan-dev \
+            libwayland-dev \
+            libxkbcommon-dev \
+            libxkbcommon-x11-dev \
+            pkg-config
+
+      - uses: dtolnay/rust-toolchain@1.98.0
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: xcalibur/xsaber
+
+      - name: Build the app in release mode
+        run: cargo build --release --manifest-path crates/app/Cargo.toml

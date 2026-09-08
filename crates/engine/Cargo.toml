@@ -1,0 +1,15 @@
+[package]
+name = "xsaber-engine"
+description = "Headless engine and diagnostics for xsaber"
+publish = false
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+version.workspace = true
+
+[dependencies]
+tracing.workspace = true
+tracing-appender.workspace = true
+tracing-subscriber.workspace = true
+zeroize.workspace = true
+xsync-client = { path = "../../../xsync/crates/xsync-client" }

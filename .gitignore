@@ -1,0 +1,7 @@
+/target/
+.DS_Store
+
+# Local application data and editor files
+.env
+.idea/
+.vscode/

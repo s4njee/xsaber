@@ -1,0 +1,16 @@
+[package]
+name = "xsaber"
+description = "xsaber desktop application"
+publish = false
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+version.workspace = true
+
+[dependencies]
+xsaber-engine = { path = "../engine", version = "0.1.0" }
+xsaber-term = { path = "../term", version = "0.1.0" }
+
+[[bin]]
+name = "xsaber"
+path = "src/main.rs"

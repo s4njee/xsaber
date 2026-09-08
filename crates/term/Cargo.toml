@@ -1,0 +1,11 @@
+[package]
+name = "xsaber-term"
+description = "Terminal model for xsaber"
+publish = false
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+version.workspace = true
+
+[lib]
+name = "xsaber_term"

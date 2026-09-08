@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"><style>body{margin:0;background:#08090b;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#ff6b3d}a:hover{color:#ff8b5f}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}</style></helmet>
+
+<section style="padding:44px 48px 40px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 26px">
+<a href="#t1" style="font:600 10px/1 Barlow,sans-serif;padding:4px 7px;background:#ff6b3d;color:#1a0d07;border-radius:4px;text-decoration:none">1</a>
+<span style="font:600 13px/1.2 Barlow,sans-serif;color:#e6e8ec">xsaber — dark, dense, modernized dual-pane with attached terminal drawer</span>
+<span style="font:400 12px/1.2 Barlow,sans-serif;color:#6b7280">Barlow / IBM Plex Mono · signal red-orange accent</span>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start">
+
+<div id="1a" style="flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px">
+<div style="display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 Barlow,sans-serif;color:#8b93a1"><a href="#1a" style="font:600 10.5px/1 Barlow,sans-serif;padding:3px 7px;background:#1a1d24;color:#e6e8ec;border-radius:5px;text-decoration:none">1a</a>Main transfer window — 1420×920</div>
+<div style="width:1420px;background:#0c0d10;border:1px solid #24282f;border-radius:10px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.6)">
+
+<div style="height:40px;display:flex;align-items:center;gap:18px;padding:0 12px 0 14px;background:#14161b;border-bottom:1px solid #24282f">
+<div style="display:flex;align-items:center;gap:8px">
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 13.5L11 2.5l2.5 1.2L5 14.6z" fill="#ff6b3d"></path><path d="M11 2.5l2.5 1.2-1.1 1.6z" fill="#ff8b5f"></path></svg>
+<span style="font:700 15px/1 Barlow,sans-serif;color:#e6e8ec;letter-spacing:-.2px"><span style="color:#ff6b3d">x</span>saber</span>
+</div>
+<div style="display:flex;gap:16px;font:500 12px/1 Barlow,sans-serif;color:#9aa1ad">
+<span>File</span><span>Edit</span><span>View</span><span>Transfer</span><span>Server</span><span>Bookmarks</span><span>Help</span>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:6px;font:500 10px/1 Barlow,sans-serif;color:#3ecfb2;padding:4px 8px;background:rgba(62,207,178,.10);border:1px solid rgba(62,207,178,.22);border-radius:4px">
+<span style="width:5px;height:5px;border-radius:50%;background:#3ecfb2"></span>SFTP · ED25519
+</div>
+<div style="display:flex;gap:14px;padding-left:8px;font:400 13px/1 Barlow,sans-serif;color:#6b7280"><span>–</span><span>□</span><span>×</span></div>
+</div>
+
+<div style="height:34px;display:flex;align-items:stretch;background:#101216;border-bottom:1px solid #24282f;padding:0 8px 0 0">
+<div style="display:flex;align-items:center;gap:8px;padding:0 14px;background:#1a1d24;border-top:2px solid #ff6b3d;font:600 11.5px/1 Barlow,sans-serif;color:#e6e8ec"><span style="width:5px;height:5px;border-radius:50%;background:#3ecfb2"></span>node-04 · prod</div>
+<div style="display:flex;align-items:center;gap:8px;padding:0 14px;font:500 11.5px/1 Barlow,sans-serif;color:#8b93a1"><span style="width:5px;height:5px;border-radius:50%;background:#4b525e"></span>staging-eu</div>
+<div style="display:flex;align-items:center;gap:8px;padding:0 14px;font:500 11.5px/1 Barlow,sans-serif;color:#8b93a1"><span style="width:5px;height:5px;border-radius:50%;background:#ffb020"></span>cdn-assets</div>
+<div style="display:flex;align-items:center;padding:0 12px;font:400 14px/1 Barlow,sans-serif;color:#6b7280">+</div>
+</div>
+
+<div style="height:46px;display:flex;align-items:center;gap:8px;padding:0 12px;background:#14161b;border-bottom:1px solid #24282f">
+<div style="display:flex;align-items:center;height:28px;background:#0c0d10;border:1px solid #2e333c;border-radius:5px;overflow:hidden">
+<span style="padding:0 8px;font:500 9.5px/1 Barlow,sans-serif;color:#6b7280;border-right:1px solid #24282f;height:100%;display:flex;align-items:center">HOST</span>
+<span style="padding:0 10px;font:400 11.5px/1 Barlow,sans-serif;color:#e6e8ec;width:196px">node-04.xsaber.dev</span>
+<span style="padding:0 8px;font:500 9.5px/1 Barlow,sans-serif;color:#6b7280;border-left:1px solid #24282f;border-right:1px solid #24282f;height:100%;display:flex;align-items:center">USER</span>
+<span style="padding:0 10px;font:400 11.5px/1 Barlow,sans-serif;color:#e6e8ec;width:78px">deploy</span>
+<span style="padding:0 8px;font:500 9.5px/1 Barlow,sans-serif;color:#6b7280;border-left:1px solid #24282f;border-right:1px solid #24282f;height:100%;display:flex;align-items:center">PORT</span>
+<span style="padding:0 10px;font:400 11.5px/1 Barlow,sans-serif;color:#e6e8ec;width:44px">22</span>
+</div>
+<div style="height:28px;display:flex;align-items:center;padding:0 14px;background:rgba(255,107,61,.08);border:1px solid #ff6b3d;border-radius:5px;font:600 11.5px/1 Barlow,sans-serif;color:#ff6b3d">Connect</div>
+<div style="width:1px;height:22px;background:#2e333c;margin:0 4px"></div>
+<div style="display:flex;gap:2px">
+<div style="width:28px;height:28px;display:grid;place-items:center;border-radius:5px;background:#1a1d24;border:1px solid #2e333c"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#c7ccd6" stroke-width="1.3"><path d="M12 7a5 5 0 1 1-1.6-3.7"></path><path d="M12 1.5V4H9.5"></path></svg></div>
+<div style="width:28px;height:28px;display:grid;place-items:center;border-radius:5px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#c7ccd6" stroke-width="1.3"><path d="M7 12V2.5"></path><path d="M3.2 6.2L7 2.4l3.8 3.8"></path></svg></div>
+<div style="width:28px;height:28px;display:grid;place-items:center;border-radius:5px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#c7ccd6" stroke-width="1.3"><path d="M7 2v9.5"></path><path d="M3.2 7.8L7 11.6l3.8-3.8"></path></svg></div>
+<div style="width:28px;height:28px;display:grid;place-items:center;border-radius:5px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#c7ccd6" stroke-width="1.3"><path d="M2 4.5h7.5L7.8 2.8"></path><path d="M12 9.5H4.5l1.7 1.7"></path></svg></div>
+<div style="width:1px;height:22px;background:#2e333c;margin:0 6px"></div>
+<div style="width:28px;height:28px;display:grid;place-items:center;border-radius:5px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#c7ccd6" stroke-width="1.3"><path d="M1.8 3h10.4L8 7.6v3.9L6 10.4V7.6z"></path></svg></div>
+<div style="width:28px;height:28px;display:grid;place-items:center;border-radius:5px;background:rgba(255,107,61,.12);border:1px solid rgba(255,107,61,.3)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#ff8b5f" stroke-width="1.3"><rect x="1.6" y="2.4" width="10.8" height="9.2" rx="1.2"></rect><path d="M4 6.2l1.6 1.5L4 9.2"></path><path d="M7.4 9.4h2.6"></path></svg></div>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:8px;height:26px;padding:0 10px;background:#0c0d10;border:1px solid #2e333c;border-radius:5px;font:400 11px/1 Barlow,sans-serif;color:#6b7280">
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#6b7280" stroke-width="1.3"><circle cx="5.2" cy="5.2" r="3.4"></circle><path d="M7.8 7.8L10.5 10.5"></path></svg>Filter files
+</div>
+<div style="display:flex;align-items:center;gap:6px;height:26px;padding:0 10px;background:#0c0d10;border:1px solid #2e333c;border-radius:5px;font:500 10.5px/1 Barlow,sans-serif;color:#ffb020">4 QUEUED</div>
+</div>
+
+<div style="display:flex;height:480px;border-bottom:1px solid #24282f">
+<sc-for list="{{ panes }}" as="p" hint-placeholder-count="2">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;border-right:1px solid #24282f">
+<div style="height:36px;display:flex;align-items:center;gap:10px;padding:0 10px;background:#101216;border-bottom:1px solid #1e222a">
+<span style="font:600 9.5px/1 Barlow,sans-serif;letter-spacing:.08em;color:#8b93a1;padding:4px 6px;background:#1a1d24;border-radius:3px">{{ p.side }}</span>
+<sc-if value="{{ p.secure }}" hint-placeholder-val="{{ true }}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#3ecfb2" stroke-width="1.3"><rect x="2" y="5.2" width="8" height="5.4" rx="1"></rect><path d="M4 5.2V3.6a2 2 0 0 1 4 0v1.6"></path></svg></sc-if>
+<span style="font:400 11.5px/1 Barlow,sans-serif;color:#c7ccd6;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.path }}</span>
+<span style="font:400 10.5px/1 Barlow,sans-serif;color:#6b7280">{{ p.meta }}</span>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 76px 100px 128px 96px;height:26px;align-items:center;padding:0 10px;background:#14161b;border-bottom:1px solid #24282f;font:600 9.5px/1 Barlow,sans-serif;letter-spacing:.06em;color:#6b7280">
+<span>NAME</span><span style="text-align:right">SIZE</span><span>TYPE</span><span>MODIFIED</span><span>PERMS</span>
+</div>
+<div style="flex:1;overflow:hidden">
+<sc-for list="{{ p.files }}" as="f" hint-placeholder-count="12">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 76px 100px 128px 96px;height:25px;align-items:center;padding:0 10px;border-bottom:1px solid #14161b;background:{{ f.bg }}">
+<span style="display:flex;align-items:center;gap:8px;min-width:0">
+<span style="font:600 8.5px/1 Barlow,sans-serif;padding:3px 4px;border-radius:2px;min-width:24px;text-align:center;background:{{ f.eb }};color:{{ f.ef }}">{{ f.ext }}</span>
+<span style="font:400 12px/1 Barlow,sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:{{ f.fg }}">{{ f.name }}</span>
+</span>
+<span style="font:400 11px/1 Barlow,sans-serif;color:#8b93a1;text-align:right">{{ f.size }}</span>
+<span style="font:400 11px/1 Barlow,sans-serif;color:#6b7280;padding-left:12px">{{ f.type }}</span>
+<span style="font:400 11px/1 Barlow,sans-serif;color:#6b7280">{{ f.mod }}</span>
+<span style="font:400 10.5px/1 Barlow,sans-serif;color:#4b525e">{{ f.perms }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="height:220px;display:flex;flex-direction:column;background:#0a0b0e">
+<div style="height:30px;display:flex;align-items:stretch;gap:0;background:#101216;border-bottom:1px solid #24282f;padding:0 6px">
+<div style="display:flex;align-items:center;gap:7px;padding:0 12px;border-bottom:2px solid #ff6b3d;font:600 11px/1 Barlow,sans-serif;color:#e6e8ec"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="#ff8b5f" stroke-width="1.4"><path d="M3 5l2 2-2 2"></path><path d="M7 9.4h4"></path></svg>Terminal</div>
+<div style="display:flex;align-items:center;gap:7px;padding:0 12px;font:500 11px/1 Barlow,sans-serif;color:#8b93a1">Transfer queue<span style="font:600 9.5px/1 Barlow,sans-serif;padding:3px 5px;background:rgba(255,176,32,.14);color:#ffb020;border-radius:3px">4</span></div>
+<div style="display:flex;align-items:center;padding:0 12px;font:500 11px/1 Barlow,sans-serif;color:#8b93a1">Message log</div>
+<div style="display:flex;align-items:center;padding:0 12px;font:500 11px/1 Barlow,sans-serif;color:#8b93a1">Sync</div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:10px;padding:0 10px;font:400 10.5px/1 Barlow,sans-serif;color:#4b525e">deploy@node-04:~ · bash<span style="color:#6b7280">⌃`</span><span style="color:#6b7280">⌄</span></div>
+</div>
+<div style="flex:1;padding:10px 12px;overflow:hidden">
+<sc-for list="{{ term }}" as="b" hint-placeholder-count="4">
+<div style="margin-bottom:6px">
+<div style="display:flex;gap:8px;font:400 11.5px/1.55 'IBM Plex Mono',monospace"><span style="color:#ff6b3d">{{ b.prompt }}</span><span style="color:#e6e8ec">{{ b.cmd }}</span></div>
+<sc-for list="{{ b.out }}" as="o" hint-placeholder-count="1">
+<div style="font:400 11.5px/1.55 'IBM Plex Mono',monospace;color:#7f8794;padding-left:2px">{{ o }}</div>
+</sc-for>
+</div>
+</sc-for>
+<div style="display:flex;gap:8px;font:400 11.5px/1.55 'IBM Plex Mono',monospace"><span style="color:#ff6b3d">deploy@node-04 ~ $</span><span style="width:7px;height:14px;background:#ff6b3d;animation:pulse 1.1s ease-in-out infinite"></span></div>
+</div>
+</div>
+
+<div style="height:26px;display:flex;align-items:center;gap:14px;padding:0 12px;background:#14161b;border-top:1px solid #24282f;font:400 10.5px/1 Barlow,sans-serif;color:#6b7280">
+<span style="color:#3ecfb2">Connected</span><span>sftp://deploy@node-04.xsaber.dev:22</span>
+<div style="flex:1"></div>
+<span>4 queued · 1 active</span><span style="color:#c7ccd6">↑ 8.4 MB/s</span><span>↓ 0 B/s</span><span>latency 24 ms</span>
+</div>
+
+</div>
+</div>
+
+<div id="1b" style="flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px">
+<div style="display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 Barlow,sans-serif;color:#8b93a1"><a href="#1b" style="font:600 10.5px/1 Barlow,sans-serif;padding:3px 7px;background:#1a1d24;color:#e6e8ec;border-radius:5px;text-decoration:none">1b</a>Site manager</div>
+<div style="width:900px;background:#0c0d10;border:1px solid #2e333c;border-radius:10px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.6)">
+<div style="height:40px;display:flex;align-items:center;padding:0 14px;background:#14161b;border-bottom:1px solid #24282f">
+<span style="font:600 13px/1 Barlow,sans-serif;color:#e6e8ec">Site manager</span>
+<div style="flex:1"></div><span style="font:400 13px/1 Barlow,sans-serif;color:#6b7280">×</span>
+</div>
+<div style="display:flex;height:480px">
+<div style="width:274px;border-right:1px solid #24282f;display:flex;flex-direction:column;background:#0a0b0e">
+<div style="height:28px;display:flex;align-items:center;padding:0 10px;font:600 9.5px/1 Barlow,sans-serif;letter-spacing:.06em;color:#6b7280;border-bottom:1px solid #1e222a">SITES</div>
+<div style="flex:1;padding:4px 0">
+<sc-for list="{{ sites }}" as="s" hint-placeholder-count="9">
+<div style="display:flex;align-items:center;gap:8px;height:27px;padding:0 10px;background:{{ s.bg }};padding-left:{{ s.pad }}">
+<span style="font:600 8.5px/1 Barlow,sans-serif;padding:3px 4px;border-radius:2px;min-width:26px;text-align:center;background:{{ s.eb }};color:{{ s.ef }}">{{ s.tag }}</span>
+<span style="font:400 12px/1 Barlow,sans-serif;color:{{ s.fg }};overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ s.name }}</span>
+</div>
+</sc-for>
+</div>
+<div style="height:34px;display:flex;align-items:center;gap:6px;padding:0 8px;border-top:1px solid #1e222a">
+<span style="font:500 11px/1 Barlow,sans-serif;color:#c7ccd6;padding:5px 9px;background:#1a1d24;border:1px solid #2e333c;border-radius:4px">New site</span>
+<span style="font:500 11px/1 Barlow,sans-serif;color:#c7ccd6;padding:5px 9px;background:#1a1d24;border:1px solid #2e333c;border-radius:4px">Folder</span>
+<div style="flex:1"></div>
+<span style="font:500 11px/1 Barlow,sans-serif;color:#8b93a1;padding:5px 9px">Duplicate</span>
+</div>
+</div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column">
+<div style="height:32px;display:flex;align-items:stretch;padding:0 10px;border-bottom:1px solid #24282f;background:#101216">
+<div style="display:flex;align-items:center;padding:0 12px;border-bottom:2px solid #ff6b3d;font:600 11px/1 Barlow,sans-serif;color:#e6e8ec">General</div>
+<div style="display:flex;align-items:center;padding:0 12px;font:500 11px/1 Barlow,sans-serif;color:#8b93a1">Advanced</div>
+<div style="display:flex;align-items:center;padding:0 12px;font:500 11px/1 Barlow,sans-serif;color:#8b93a1">Transfer</div>
+<div style="display:flex;align-items:center;padding:0 12px;font:500 11px/1 Barlow,sans-serif;color:#8b93a1">Charset</div>
+</div>
+<div style="flex:1;padding:16px 18px;display:flex;flex-direction:column;gap:11px">
+<sc-for list="{{ form }}" as="r" hint-placeholder-count="8">
+<div style="display:grid;grid-template-columns:104px minmax(0,1fr);align-items:center;gap:14px">
+<span style="font:500 11px/1 Barlow,sans-serif;color:#8b93a1;text-align:right">{{ r.label }}</span>
+<div style="display:flex;align-items:center;height:28px;padding:0 10px;background:#0a0b0e;border:1px solid #2e333c;border-radius:5px;font:400 11.5px/1 Barlow,sans-serif;color:{{ r.fg }}">{{ r.value }}<div style="flex:1"></div><span style="font:400 10px/1 Barlow,sans-serif;color:#4b525e">{{ r.hint }}</span></div>
+</div>
+</sc-for>
+<div style="display:grid;grid-template-columns:104px minmax(0,1fr);gap:14px;margin-top:2px">
+<span></span>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<span style="font:500 10.5px/1 Barlow,sans-serif;color:#3ecfb2;padding:5px 8px;background:rgba(62,207,178,.10);border:1px solid rgba(62,207,178,.24);border-radius:4px">HOST KEY VERIFIED</span>
+<span style="font:500 10.5px/1 Barlow,sans-serif;color:#8b93a1;padding:5px 8px;background:#14161b;border:1px solid #2e333c;border-radius:4px">SHA256:9f2a…c41d</span>
+<span style="font:500 10.5px/1 Barlow,sans-serif;color:#8b93a1;padding:5px 8px;background:#14161b;border:1px solid #2e333c;border-radius:4px">last used 2h ago</span>
+</div>
+</div>
+</div>
+<div style="height:46px;display:flex;align-items:center;gap:8px;padding:0 16px;border-top:1px solid #24282f;background:#101216">
+<span style="font:500 11px/1 Barlow,sans-serif;color:#8b93a1">Delete</span>
+<div style="flex:1"></div>
+<span style="font:500 11.5px/1 Barlow,sans-serif;color:#c7ccd6;padding:7px 13px;background:#1a1d24;border:1px solid #2e333c;border-radius:5px">Cancel</span>
+<span style="font:600 11.5px/1 Barlow,sans-serif;color:#c7ccd6;padding:7px 13px;background:#1a1d24;border:1px solid #2e333c;border-radius:5px">Save</span>
+<span style="font:600 11.5px/1 Barlow,sans-serif;color:#ff6b3d;padding:6px 14px;background:rgba(255,107,61,.08);border:1px solid #ff6b3d;border-radius:5px">Connect</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="1c" style="flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px">
+<div style="display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 Barlow,sans-serif;color:#8b93a1"><a href="#1c" style="font:600 10.5px/1 Barlow,sans-serif;padding:3px 7px;background:#1a1d24;color:#e6e8ec;border-radius:5px;text-decoration:none">1c</a>Quick connect popover, then connecting</div>
+<div style="display:flex;gap:20px;align-items:flex-start">
+
+<div style="width:400px;background:#0c0d10;border:1px solid #2e333c;border-radius:9px;box-shadow:0 20px 46px rgba(0,0,0,.6);overflow:hidden">
+<div style="height:34px;display:flex;align-items:center;gap:8px;padding:0 12px;background:#14161b;border-bottom:1px solid #24282f">
+<span style="font:600 9.5px/1 Barlow,sans-serif;letter-spacing:.07em;color:#8b93a1">QUICK CONNECT</span>
+<div style="flex:1"></div><span style="font:400 10.5px/1 Barlow,sans-serif;color:#4b525e">⌘K</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:9px">
+<div style="display:flex;align-items:center;height:32px;background:#0a0b0e;border:1px solid #ff6b3d;border-radius:5px;padding:0 10px;gap:8px">
+<span style="font:600 9.5px/1 Barlow,sans-serif;color:#6b7280">sftp://</span>
+<span style="font:400 12px/1 Barlow,sans-serif;color:#e6e8ec">deploy@node-04.xsaber.dev</span>
+<span style="width:6px;height:14px;background:#ff6b3d;animation:pulse 1.1s ease-in-out infinite"></span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 84px;gap:8px">
+<div style="display:flex;align-items:center;height:30px;background:#0a0b0e;border:1px solid #2e333c;border-radius:5px;padding:0 10px;font:400 11.5px/1 Barlow,sans-serif;color:#6b7280">Key: ~/.ssh/id_ed25519</div>
+<div style="display:flex;align-items:center;height:30px;background:#0a0b0e;border:1px solid #2e333c;border-radius:5px;padding:0 10px;font:400 11.5px/1 Barlow,sans-serif;color:#c7ccd6">22</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:1px;margin-top:3px">
+<div style="font:600 9.5px/1 Barlow,sans-serif;letter-spacing:.06em;color:#4b525e;padding:6px 2px">RECENT</div>
+<sc-for list="{{ recents }}" as="r" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:9px;height:28px;padding:0 8px;border-radius:4px;background:{{ r.bg }}">
+<span style="width:5px;height:5px;border-radius:50%;background:{{ r.dot }}"></span>
+<span style="font:400 11.5px/1 Barlow,sans-serif;color:#c7ccd6">{{ r.host }}</span>
+<div style="flex:1"></div>
+<span style="font:400 10.5px/1 Barlow,sans-serif;color:#4b525e">{{ r.when }}</span>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;gap:8px;margin-top:5px">
+<span style="flex:1;text-align:center;font:600 11.5px/1 Barlow,sans-serif;color:#ff6b3d;padding:8px;background:rgba(255,107,61,.08);border:1px solid #ff6b3d;border-radius:5px">Connect</span>
+<span style="font:500 11.5px/1 Barlow,sans-serif;color:#c7ccd6;padding:9px 12px;background:#1a1d24;border:1px solid #2e333c;border-radius:5px">Save site</span>
+</div>
+</div>
+</div>
+
+<div style="width:400px;background:#0c0d10;border:1px solid #2e333c;border-radius:9px;box-shadow:0 20px 46px rgba(0,0,0,.6);overflow:hidden">
+<div style="height:34px;display:flex;align-items:center;gap:9px;padding:0 12px;background:#14161b;border-bottom:1px solid #24282f">
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#ff6b3d" stroke-width="1.6" style="animation:spin 900ms linear infinite"><path d="M6 1.2a4.8 4.8 0 1 1-3.4 1.4"></path></svg>
+<span style="font:600 9.5px/1 Barlow,sans-serif;letter-spacing:.07em;color:#e6e8ec">CONNECTING</span>
+<div style="flex:1"></div><span style="font:400 10.5px/1 Barlow,sans-serif;color:#6b7280">Cancel</span>
+</div>
+<div style="height:2px;background:#1a1d24"><div style="width:64%;height:2px;background:#ff6b3d"></div></div>
+<div style="padding:13px;font:400 11.5px/1.7 Barlow,sans-serif">
+<sc-for list="{{ handshake }}" as="h" hint-placeholder-count="6">
+<div style="display:flex;gap:9px">
+<span style="color:#4b525e;min-width:52px">{{ h.t }}</span>
+<span style="color:{{ h.fg }};min-width:12px">{{ h.mark }}</span>
+<span style="color:#9aa1ad">{{ h.msg }}</span>
+</div>
+</sc-for>
+</div>
+<div style="padding:11px 13px;border-top:1px solid #1e222a;background:#0a0b0e;display:flex;align-items:center;gap:9px">
+<span style="font:600 9.5px/1 Barlow,sans-serif;color:#ffb020;padding:4px 6px;background:rgba(255,176,32,.13);border-radius:3px">NEW HOST KEY</span>
+<span style="font:400 10.5px/1.4 Barlow,sans-serif;color:#7f8794">SHA256:9f2a…c41d — trust and continue?</span>
+</div>
+</div>
+
+</div>
+</div>
+
+<div id="1d" style="flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px">
+<div style="display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 Barlow,sans-serif;color:#8b93a1"><a href="#1d" style="font:600 10.5px/1 Barlow,sans-serif;padding:3px 7px;background:#1a1d24;color:#e6e8ec;border-radius:5px;text-decoration:none">1d</a>Drawer, expanded — transfer queue &amp; history (detail of <a href="#1a" style="color:#ff8b5f;text-decoration:none">1a</a>)</div>
+<div style="width:1420px;background:#0a0b0e;border:1px solid #24282f;border-radius:10px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.6)">
+<div style="height:30px;display:flex;align-items:stretch;background:#101216;border-bottom:1px solid #24282f;padding:0 6px">
+<div style="display:flex;align-items:center;padding:0 12px;font:500 11px/1 Barlow,sans-serif;color:#8b93a1">Terminal</div>
+<div style="display:flex;align-items:center;gap:7px;padding:0 12px;border-bottom:2px solid #ff6b3d;font:600 11px/1 Barlow,sans-serif;color:#e6e8ec">Transfer queue<span style="font:600 9.5px/1 Barlow,sans-serif;padding:3px 5px;background:rgba(255,176,32,.14);color:#ffb020;border-radius:3px">4</span></div>
+<div style="display:flex;align-items:center;padding:0 12px;font:500 11px/1 Barlow,sans-serif;color:#8b93a1">Message log</div>
+<div style="display:flex;align-items:center;padding:0 12px;font:500 11px/1 Barlow,sans-serif;color:#8b93a1">Sync</div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:10px;padding:0 10px;font:500 10.5px/1 Barlow,sans-serif;color:#6b7280"><span style="color:#c7ccd6">↑ 8.4 MB/s</span>· 3 workers · retry ×2<span style="color:#6b7280">⌄</span></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 84px 220px 84px 72px 96px;height:26px;align-items:center;padding:0 12px;background:#14161b;border-bottom:1px solid #24282f;font:600 9.5px/1 Barlow,sans-serif;letter-spacing:.06em;color:#6b7280">
+<span>FILE</span><span style="text-align:right">SIZE</span><span style="padding-left:16px">PROGRESS</span><span style="text-align:right">SPEED</span><span style="text-align:right">ETA</span><span style="padding-left:16px">STATE</span>
+</div>
+<sc-for list="{{ queue }}" as="q" hint-placeholder-count="7">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 84px 220px 84px 72px 96px;height:32px;align-items:center;padding:0 12px;border-bottom:1px solid #14161b;background:{{ q.bg }}">
+<span style="display:flex;align-items:center;gap:9px;min-width:0">
+<span style="font:600 11px/1 Barlow,sans-serif;color:{{ q.dirFg }};width:9px">{{ q.dir }}</span>
+<span style="font:400 12px/1 Barlow,sans-serif;color:#e6e8ec;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ q.name }}</span>
+<span style="font:400 10.5px/1 Barlow,sans-serif;color:#4b525e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ q.path }}</span>
+</span>
+<span style="font:400 11px/1 Barlow,sans-serif;color:#8b93a1;text-align:right">{{ q.size }}</span>
+<span style="padding-left:16px;display:flex;align-items:center;gap:9px">
+<span style="flex:1;height:4px;background:#1a1d24;border-radius:2px;overflow:hidden"><span style="display:block;height:4px;border-radius:2px;width:{{ q.pct }};background:{{ q.barFg }}"></span></span>
+<span style="font:500 10px/1 Barlow,sans-serif;color:#7f8794;width:32px;text-align:right">{{ q.pct }}</span>
+</span>
+<span style="font:400 11px/1 Barlow,sans-serif;color:#8b93a1;text-align:right">{{ q.speed }}</span>
+<span style="font:400 11px/1 Barlow,sans-serif;color:#6b7280;text-align:right">{{ q.eta }}</span>
+<span style="padding-left:16px"><span style="font:600 9px/1 Barlow,sans-serif;letter-spacing:.05em;padding:4px 6px;border-radius:3px;background:{{ q.sb }};color:{{ q.sf }}">{{ q.state }}</span></span>
+</div>
+</sc-for>
+<div style="height:26px;display:flex;align-items:center;gap:10px;padding:0 12px;background:#101216;border-top:1px solid #24282f;border-bottom:1px solid #24282f;font:600 9.5px/1 Barlow,sans-serif;letter-spacing:.06em;color:#6b7280">HISTORY · TODAY<div style="flex:1"></div><span style="color:#4b525e">18 transfers · 412.6 MB · 1 failed</span></div>
+<sc-for list="{{ history }}" as="h" hint-placeholder-count="4">
+<div style="display:grid;grid-template-columns:64px minmax(0,1fr) 84px 96px 120px;height:27px;align-items:center;padding:0 12px;border-bottom:1px solid #101216;font:400 11px/1 Barlow,sans-serif">
+<span style="color:#4b525e">{{ h.t }}</span>
+<span style="color:#9aa1ad;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ h.name }}</span>
+<span style="color:#6b7280;text-align:right">{{ h.size }}</span>
+<span style="color:#4b525e;text-align:right">{{ h.dur }}</span>
+<span style="padding-left:16px"><span style="font:600 9px/1 Barlow,sans-serif;letter-spacing:.05em;padding:4px 6px;border-radius:3px;background:{{ h.sb }};color:{{ h.sf }}">{{ h.state }}</span></span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div id="1e" style="flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px">
+<div style="display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 Barlow,sans-serif;color:#8b93a1"><a href="#1e" style="font:600 10.5px/1 Barlow,sans-serif;padding:3px 7px;background:#1a1d24;color:#e6e8ec;border-radius:5px;text-decoration:none">1e</a>Preferences — Transfers</div>
+<div style="width:940px;background:#0c0d10;border:1px solid #2e333c;border-radius:10px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.6)">
+<div style="height:40px;display:flex;align-items:center;padding:0 14px;background:#14161b;border-bottom:1px solid #24282f">
+<span style="font:600 13px/1 Barlow,sans-serif;color:#e6e8ec">Preferences</span>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:7px;height:26px;padding:0 10px;background:#0a0b0e;border:1px solid #2e333c;border-radius:5px;font:400 11px/1 Barlow,sans-serif;color:#6b7280"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#6b7280" stroke-width="1.3"><circle cx="5.2" cy="5.2" r="3.4"></circle><path d="M7.8 7.8L10.5 10.5"></path></svg>Search settings</div>
+</div>
+<div style="display:flex;height:566px">
+<div style="width:194px;border-right:1px solid #24282f;background:#0a0b0e;padding:8px 0">
+<sc-for list="{{ nav }}" as="n" hint-placeholder-count="7">
+<div style="display:flex;align-items:center;gap:9px;height:30px;padding:0 12px;background:{{ n.bg }};border-left:2px solid {{ n.bar }}">
+<span style="font:500 12px/1 Barlow,sans-serif;color:{{ n.fg }}">{{ n.name }}</span>
+</div>
+</sc-for>
+</div>
+<div style="flex:1;min-width:0;padding:16px 20px;display:flex;flex-direction:column;gap:14px">
+<sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+<div>
+<div style="font:600 9.5px/1 Barlow,sans-serif;letter-spacing:.07em;color:#6b7280;padding-bottom:9px;border-bottom:1px solid #1e222a">{{ g.title }}</div>
+<sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:16px;padding:9px 0;border-bottom:1px solid #101216">
+<div style="flex:1;min-width:0">
+<div style="font:500 12px/1.3 Barlow,sans-serif;color:#e6e8ec">{{ r.label }}</div>
+<div style="font:400 11px/1.4 Barlow,sans-serif;color:#6b7280">{{ r.help }}</div>
+</div>
+<sc-if value="{{ r.isToggle }}" hint-placeholder-val="{{ true }}">
+<span style="width:34px;height:18px;border-radius:9px;background:{{ r.tb }};display:flex;align-items:center;padding:0 2px;justify-content:{{ r.tj }}"><span style="width:14px;height:14px;border-radius:50%;background:{{ r.tk }}"></span></span>
+</sc-if>
+<sc-if value="{{ r.isValue }}" hint-placeholder-val="{{ true }}">
+<span style="display:flex;align-items:center;gap:8px;height:27px;padding:0 10px;background:#0a0b0e;border:1px solid #2e333c;border-radius:5px;font:400 11.5px/1 Barlow,sans-serif;color:#c7ccd6;min-width:{{ r.w }}">{{ r.value }}<div style="flex:1"></div><span style="color:#4b525e">{{ r.suffix }}</span></span>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="height:46px;display:flex;align-items:center;gap:8px;padding:0 16px;border-top:1px solid #24282f;background:#101216">
+<span style="font:500 11px/1 Barlow,sans-serif;color:#8b93a1">Restore defaults</span>
+<div style="flex:1"></div>
+<span style="font:500 11.5px/1 Barlow,sans-serif;color:#c7ccd6;padding:7px 13px;background:#1a1d24;border:1px solid #2e333c;border-radius:5px">Cancel</span>
+<span style="font:600 11.5px/1 Barlow,sans-serif;color:#1a0d07;padding:7px 15px;background:#ff6b3d;border-radius:5px">Apply</span>
+</div>
+</div>
+</div>
+
+</div>
+
+<p style="margin:26px 0 0;font:12px/1.5 Barlow,sans-serif;color:#6b7280">Try next: "add a file-conflict dialog" · "show <a href="#1a" style="color:#ff8b5f;text-decoration:none">1a</a> in a light theme" · "make the drawer a right-hand sidebar instead"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const EXT = {
+  DIR:['rgba(122,162,255,.14)','#7aa2ff'], JS:['rgba(255,199,64,.13)','#ffc740'],
+  CSS:['rgba(98,182,255,.13)','#62b6ff'], HTM:['rgba(255,107,61,.15)','#ff8b5f'],
+  PHP:['rgba(155,123,255,.15)','#b39bff'], MD:['rgba(255,255,255,.06)','#9aa1ad'],
+  XML:['rgba(255,255,255,.06)','#9aa1ad'], TXT:['rgba(255,255,255,.06)','#9aa1ad'],
+  ICO:['rgba(255,255,255,.06)','#9aa1ad'], CFG:['rgba(255,255,255,.06)','#8b93a1'],
+  ENV:['rgba(255,77,79,.13)','#ff7a7c'], SVG:['rgba(62,207,178,.13)','#3ecfb2']
+};
+function f(name, ext, size, type, mod, perms, o) {
+  o = o || {};
+  const e = EXT[ext] || EXT.TXT;
+  return { name, ext, size, type, mod, perms, eb: e[0], ef: e[1],
+    fg: o.dim ? '#6b7280' : '#e6e8ec',
+    bg: o.sel ? 'rgba(255,107,61,0.09)' : (o.q ? 'rgba(255,176,32,0.05)' : 'transparent') };
+}
+const BADGE = {
+  active:['rgba(255,107,61,.14)','#ff8b5f'], queued:['rgba(255,255,255,.06)','#8b93a1'],
+  ok:['rgba(62,207,178,.12)','#3ecfb2'], err:['rgba(255,77,79,.13)','#ff7a7c'],
+  skip:['rgba(255,176,32,.13)','#ffb020']
+};
+class Component extends DCLogic {
+  renderVals() {
+    const local = [
+      f('..','DIR','','Parent folder','','drwxr-xr-x',{dim:true}),
+      f('assets','DIR','—','Folder','07 Sep 14:02','drwxr-xr-x'),
+      f('index.html','HTM','4.2 KB','HTML document','07 Sep 14:02','-rw-r--r--',{sel:true}),
+      f('app.b41f9c.js','JS','486 KB','JavaScript','07 Sep 14:02','-rw-r--r--',{sel:true}),
+      f('app.b41f9c.css','CSS','88.4 KB','Stylesheet','07 Sep 14:02','-rw-r--r--',{sel:true}),
+      f('vendor.9a2e14.js','JS','1.2 MB','JavaScript','07 Sep 14:02','-rw-r--r--',{sel:true}),
+      f('logo-mark.svg','SVG','3.1 KB','SVG image','04 Sep 09:18','-rw-r--r--'),
+      f('favicon.ico','ICO','15.0 KB','Icon','21 Aug 11:40','-rw-r--r--'),
+      f('manifest.webmanifest','CFG','612 B','Manifest','07 Sep 14:02','-rw-r--r--'),
+      f('robots.txt','TXT','128 B','Text','21 Aug 11:40','-rw-r--r--'),
+      f('sitemap.xml','XML','9.8 KB','XML document','07 Sep 14:02','-rw-r--r--'),
+      f('CHANGELOG.md','MD','21.4 KB','Markdown','07 Sep 13:55','-rw-r--r--'),
+      f('.env.production','ENV','740 B','Environment','06 Sep 18:31','-rw-------',{dim:true}),
+      f('build-report.json','CFG','56.2 KB','JSON','07 Sep 14:02','-rw-r--r--')
+    ];
+    const remote = [
+      f('..','DIR','','Parent folder','','drwxr-xr-x',{dim:true}),
+      f('assets','DIR','—','Folder','07 Sep 13:40','drwxr-xr-x'),
+      f('logs','DIR','—','Folder','07 Sep 14:11','drwxrwxr-x'),
+      f('index.html','HTM','4.1 KB','HTML document','06 Sep 22:07','-rw-r--r--',{q:true}),
+      f('app.b41f9c.js','JS','232 KB','JavaScript','07 Sep 14:12','-rw-r--r--',{q:true}),
+      f('app.7fd11a.js','JS','478 KB','JavaScript','01 Sep 10:26','-rw-r--r--',{dim:true}),
+      f('app.b41f9c.css','CSS','0 B','Stylesheet','07 Sep 14:12','-rw-r--r--',{q:true}),
+      f('vendor.9a2e14.js','JS','1.2 MB','JavaScript','01 Sep 10:26','-rw-r--r--'),
+      f('favicon.ico','ICO','15.0 KB','Icon','21 Aug 11:41','-rw-r--r--'),
+      f('robots.txt','TXT','128 B','Text','21 Aug 11:41','-rw-r--r--'),
+      f('.htaccess','CFG','1.9 KB','Config','12 Jul 08:03','-rw-r--r--'),
+      f('healthz.php','PHP','284 B','PHP script','12 Jul 08:03','-rw-r--r--'),
+      f('release.lock','CFG','0 B','Lock file','07 Sep 14:11','-rw-rw----',{dim:true})
+    ];
+    const panes = [
+      { side:'LOCAL', secure:false, path:'~/projects/atlas-web/dist', meta:'14 items · 4 selected · 1.8 MB', files:local },
+      { side:'REMOTE', secure:true, path:'/var/www/atlas/releases/20260907', meta:'13 items · 3 writing', files:remote }
+    ];
+    const term = [
+      { prompt:'deploy@node-04 ~ $', cmd:'df -h /var/www', out:['Filesystem      Size  Used Avail Use%  Mounted on','/dev/nvme0n1p2  394G  188G  186G  51%   /var/www'] },
+      { prompt:'deploy@node-04 ~ $', cmd:'ln -sfn releases/20260907 current && systemctl reload nginx', out:['nginx: configuration file /etc/nginx/nginx.conf test is successful'] },
+      { prompt:'deploy@node-04 ~ $', cmd:'tail -n 2 logs/access.log', out:['10.4.2.19 - "GET /index.html" 200 4118 12ms','10.4.2.44 - "GET /app.b41f9c.js" 200 237568 41ms'] }
+    ];
+    const site = (name, tag, kind, o) => {
+      o = o || {};
+      const map = { group:['rgba(255,255,255,.05)','#8b93a1'], sftp:['rgba(62,207,178,.12)','#3ecfb2'], ftps:['rgba(122,162,255,.13)','#7aa2ff'], ftp:['rgba(255,176,32,.13)','#ffb020'], s3:['rgba(155,123,255,.14)','#b39bff'] };
+      const c = map[kind];
+      return { name, tag, eb:c[0], ef:c[1], pad:(o.child?'26px':'10px'),
+        bg:o.sel?'rgba(255,107,61,0.10)':'transparent', fg:o.sel?'#e6e8ec':'#c7ccd6' };
+    };
+    const sites = [
+      site('Atlas production','▾','group'),
+      site('node-04 · prod','SFTP','sftp',{child:true,sel:true}),
+      site('node-05 · prod','SFTP','sftp',{child:true}),
+      site('cdn-assets','S3','s3',{child:true}),
+      site('Staging','▾','group'),
+      site('staging-eu','SFTP','sftp',{child:true}),
+      site('staging-us','SFTP','sftp',{child:true}),
+      site('Legacy clients','▾','group'),
+      site('hollis-media.net','FTPS','ftps',{child:true}),
+      site('kestrel-print.co','FTP','ftp',{child:true}),
+      site('archive.dev-1998','FTP','ftp',{child:true})
+    ];
+    const form = [
+      { label:'Protocol', value:'SFTP — SSH File Transfer', hint:'▾', fg:'#e6e8ec' },
+      { label:'Host', value:'node-04.xsaber.dev', hint:'', fg:'#e6e8ec' },
+      { label:'Port', value:'22', hint:'default', fg:'#e6e8ec' },
+      { label:'Logon type', value:'Key file', hint:'▾', fg:'#e6e8ec' },
+      { label:'User', value:'deploy', hint:'', fg:'#e6e8ec' },
+      { label:'Key file', value:'~/.ssh/id_ed25519', hint:'Browse…', fg:'#e6e8ec' },
+      { label:'Remote dir', value:'/var/www/atlas/releases', hint:'', fg:'#c7ccd6' },
+      { label:'Local dir', value:'~/projects/atlas-web/dist', hint:'', fg:'#c7ccd6' },
+      { label:'Comment', value:'Blue-green deploy target — do not delete releases/', hint:'', fg:'#8b93a1' }
+    ];
+    const recents = [
+      { host:'deploy@node-04.xsaber.dev', when:'2h ago', dot:'#3ecfb2', bg:'rgba(255,107,61,0.07)' },
+      { host:'deploy@staging-eu.xsaber.dev', when:'yesterday', dot:'#4b525e', bg:'transparent' },
+      { host:'ftp@hollis-media.net', when:'4 Sep', dot:'#ffb020', bg:'transparent' },
+      { host:'ci@cdn-assets.xsaber.dev', when:'28 Aug', dot:'#4b525e', bg:'transparent' }
+    ];
+    const hs = (t, mark, msg, kind) => ({ t, mark, msg, fg: kind==='ok'?'#3ecfb2':(kind==='wait'?'#ff6b3d':'#4b525e') });
+    const handshake = [
+      hs('0.004s','✓','Resolved node-04.xsaber.dev → 10.4.2.19','ok'),
+      hs('0.021s','✓','TCP connection established on port 22','ok'),
+      hs('0.088s','✓','Server: OpenSSH_9.6p1 · SSH-2.0','ok'),
+      hs('0.140s','✓','Key exchange curve25519-sha256','ok'),
+      hs('0.212s','●','Verifying host key fingerprint…','wait'),
+      hs('','','Authenticating deploy with id_ed25519','')
+    ];
+    const q = (dir, name, path, size, pct, speed, eta, state) => {
+      const b = BADGE[state==='transferring'?'active':(state==='queued'?'queued':(state==='failed'?'err':(state==='skipped'?'skip':'ok')))];
+      return { dir: dir==='up'?'↑':'↓', dirFg: dir==='up'?'#ff8b5f':'#62b6ff', name, path, size, pct, speed, eta,
+        state: state.toUpperCase(), sb:b[0], sf:b[1],
+        barFg: state==='failed'?'#ff4d4f':(state==='transferring'?'#ff6b3d':'#2e333c'),
+        bg: state==='transferring'?'rgba(255,107,61,0.05)':'transparent' };
+    };
+    const queue = [
+      q('up','vendor.9a2e14.js','dist → releases/20260907','1.2 MB','64%','8.4 MB/s','0:04','transferring'),
+      q('up','app.b41f9c.css','dist → releases/20260907','88.4 KB','0%','—','—','queued'),
+      q('up','index.html','dist → releases/20260907','4.2 KB','0%','—','—','queued'),
+      q('up','sitemap.xml','dist → releases/20260907','9.8 KB','0%','—','—','queued'),
+      q('up','assets/hero-2400.webp','dist/assets → releases/…/assets','842 KB','100%','11.2 MB/s','—','complete'),
+      q('down','logs/access.log','releases/…/logs → ~/tmp','24.6 MB','100%','6.8 MB/s','—','complete'),
+      q('up','.env.production','dist → releases/20260907','740 B','0%','—','—','skipped'),
+      q('up','app.b41f9c.js','dist → releases/20260907','486 KB','38%','—','—','failed')
+    ];
+    const h = (t, name, size, dur, state) => {
+      const b = BADGE[state==='failed'?'err':(state==='skipped'?'skip':'ok')];
+      return { t, name, size, dur, state: state.toUpperCase(), sb:b[0], sf:b[1] };
+    };
+    const history = [
+      h('14:12:06','↑ releases/20260907/assets/hero-2400.webp','842 KB','0.9 s','complete'),
+      h('14:11:52','↓ logs/access.log','24.6 MB','3.6 s','complete'),
+      h('14:11:20','↑ releases/20260907/robots.txt','128 B','0.1 s','complete'),
+      h('14:10:44','↑ releases/20260906/app.7fd11a.js','478 KB','—','failed'),
+      h('14:09:58','↑ releases/20260907/.DS_Store','6 KB','—','skipped')
+    ];
+    const nav = ['Connection','Transfers','Interface','Terminal','Security','File editing','Updates'].map(n => ({
+      name:n, bg: n==='Transfers'?'rgba(255,107,61,0.09)':'transparent',
+      bar: n==='Transfers'?'#ff6b3d':'transparent', fg: n==='Transfers'?'#e6e8ec':'#9aa1ad'
+    }));
+    const tog = (label, help, on) => ({ label, help, isToggle:true, isValue:false,
+      tb: on?'#ff6b3d':'#24282f', tk: on?'#1a0d07':'#6b7280', tj: on?'flex-end':'flex-start' });
+    const val = (label, help, value, suffix, w) => ({ label, help, isValue:true, isToggle:false, value, suffix, w: w||'120px' });
+    const groups = [
+      { title:'CONCURRENCY', rows:[
+        val('Simultaneous transfers','Per session. Higher values saturate slow links.','3','▾','96px'),
+        val('Speed limit — upload','Applies to all sessions','unlimited','KB/s','150px'),
+        tog('Split large files into chunks','Files above 64 MB are transferred in parallel parts',true)
+      ]},
+      { title:'CONFLICTS & INTEGRITY', rows:[
+        val('When the file exists','Default action for the overwrite dialog','Overwrite if newer','▾','170px'),
+        tog('Verify checksums after upload','Compares SHA-256 on both ends; slows large batches',true),
+        tog('Resume interrupted transfers','Restarts from the last confirmed byte',true),
+        tog('Preserve timestamps','Requires server support (MFMT / SFTP setstat)',false)
+      ]},
+      { title:'FILTERS', rows:[
+        val('Ignore patterns','Skipped in both directions','.DS_Store, .git/, *.log','edit','190px'),
+        tog('Warn before uploading dotfiles','Catches .env and credential files',true)
+      ]}
+    ];
+    return { panes, term, sites, form, recents, handshake, queue, history, nav, groups };
+  }
+}
+</script>
+</body>
+</html>
