@@ -396,6 +396,10 @@ kind, owner_names: Option }` and a `FileClass` for the badge palette.
 - Cancel: closing the exec channel aborts outstanding requests without wedging the session's other channels (test with a 100 MB read cancelled at 10%).
 - Integration tests run against a real `xs --server` spawned locally over the in-process SSH server (E15-S1) and, in a nightly job, over Docker `openssh-server` with `xs` installed.
 
+**Blocker:** The exec-channel adapter requires E2's live russh actor and the
+`E15-S1` SSH fixture. `f9b9a8c` provides the object-safe contract it will
+implement; no shell-string backend is substituted in the meantime.
+
 #### E3-S3 — Capability and protocol gating
 Advertise nothing the server did not grant; never send a type outside the
 granted feature set (an unknown type kills the session).
@@ -423,10 +427,18 @@ reads (8 outstanding `SSH_FXP_READ`s per file).
 - `rename` over an existing destination with `RenameMode::Replace` removes-then-renames and reports `ATOMIC_RENAME` off; with `NoReplace` it fails cleanly.
 - `VERIFIED_COMMIT` is off; the UI's "verified" tick is never shown for SFTP.
 
+**Blocker:** A real SFTP backend needs E2's live authenticated channel and
+`russh-sftp`; the throughput acceptance test additionally needs E15's netem
+and Docker fixtures. `f9b9a8c` ensures its capability surface cannot claim
+verified commit or atomic rename before those paths exist.
+
 #### E4-S2 — Shared trust and auth
 The SFTP backend reuses E2's session; no second handshake, no second prompt.
 **AC**
 - Connecting to a host with and without `xs` shows exactly one host-key prompt in both cases.
+
+**Blocker:** This proof waits on E2's live russh host-key/auth callbacks and
+the E15 SSH fixture; no second session is created by the policy layer.
 
 #### E4-S3 — Protocol selection
 `Site.protocol ∈ { Auto, Xsync, Sftp }`, default Auto: try xsync, fall back to

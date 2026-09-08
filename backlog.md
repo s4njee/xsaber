@@ -107,3 +107,15 @@ change xsync. Their provider/consumer contract is in
 | `E2-S3` Authentication ladder | In progress — typed agent/key/password/KI policy, partial-success continuation, and secret-safe prompt types landed in `dd069e8`; live russh authentication and E15 server proof remain. |
 | `E2-S4` SSH config | In progress — safe, typed Host/HostName/User/Port/IdentityFile/ProxyCommand resolution and explicit ProxyJump/Match errors landed in `dd069e8`; mandated `russh-config::parse_home` and ProxyCommand stream wiring remain. |
 | `E2-S5` Reconnect supervisor | Planned |
+
+## E3/E4 — Remote filesystem and SFTP fallback
+
+| Story | Status |
+|---|---|
+| `E3-S1` `RemoteFs` trait | In progress — object-safe contract, safe remote paths, metadata, capability bits, and I/O-handle interfaces landed in `f9b9a8c`; adapter implementations remain. |
+| `E3-S2` xsync backend | Blocked — requires E2’s live russh actor and E15’s in-process SSH fixture before an exec-channel backend can be tested safely. |
+| `E3-S3` Capability gating | In progress — `Caps` preserves unknown bits and exposes only explicit capabilities in `f9b9a8c`; mapping real xsync grants remains. |
+| `E3-S4` Remote binary override | Planned |
+| `E4-S1` SFTP backend | Blocked — requires the live E2 session/channel actor and `russh-sftp` integration; performance proof also requires E15 netem/Docker fixtures. |
+| `E4-S2` Shared trust and auth | Blocked — depends on E2’s live russh callback/auth adapter. |
+| `E4-S3` Protocol selection | In progress — typed Auto/Xsync/SFTP selection and fallback-only-on-unavailability policy landed in `f9b9a8c`; backend execution remains. |
