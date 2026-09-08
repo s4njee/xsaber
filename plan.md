@@ -254,6 +254,10 @@ implementation and `cx.text_system().add_fonts`. Theme sets `font_family =
 - The app renders with Barlow on a machine with neither font installed (CI's Linux runner is such a machine; a visual test asserts glyph advance widths differ from the fallback).
 - `assets/fonts/OFL.txt` ships in every bundle (E16).
 
+**Blocker:** The bundle-shipping AC waits on `E16`; the remaining `AssetSource`,
+font-registration, and fallback-width work is local to this story and is not
+externally blocked.
+
 #### E1-S3 — Icons and wordmark
 Vendor a Lucide subset as SVG (refresh, upload, download, sync, filter,
 terminal, search, lock, chevrons, plus, close, folder) and the placeholder
@@ -267,6 +271,10 @@ Row-height and text-style constants for the design's scale (25/26/27/28/30/32/34
 **AC**
 - `Table` rows can be forced to 25px (verify the kit's row-height API; if it is fixed per size variant, the file table is built on `virtual_list` instead and this story records that in `design-gaps.md`).
 - The kitchen-sink example (E1-S6) shows each primitive in every state named in the handoff (default, hover, selected, focused, disabled).
+
+**Blocker:** The all-state visual proof cannot close until the `E1-S6`
+kitchen-sink fixture exists; implementation and row-height API research can
+proceed independently.
 
 #### E1-S5 — Window chrome and menus
 Custom title bar via the kit's `TitleBar`/`WindowBorder`: wordmark, in-window
@@ -285,6 +293,9 @@ fixture.
 **AC**
 - `cargo run -p kitchen-sink` opens a window reproducing screens `1a`–`1e` as static views selectable from a sidebar.
 - Screenshots of each screen are captured under `test-support` and diffed in E15-S3.
+
+**Blocker:** Screenshot-diff acceptance depends on the `E15-S3` visual
+regression harness; the static example itself is not blocked by that harness.
 
 ### E2 — Engine: SSH sessions (russh)
 
@@ -807,6 +818,10 @@ agent; console-less launch.
 **AC**
 - CI Windows job leaves `continue-on-error`; the app connects to the Docker server from a Windows runner.
 
+**Blocker:** `xsync-core` currently imports Unix-only `rustix::fs`, which makes
+the allowed E0 Windows CI job fail. The provider must gain Windows support
+before this story can close its Windows connection acceptance criterion.
+
 ### E17 — Suite integration
 
 #### E17-S1 — Submodule registration
@@ -828,6 +843,12 @@ File in `../xsync/backlog.md`, cited from `integration.md`, prioritised:
 6. `read_dir_path` overflow: a paged variant so large directories do not fall back to the handle path.
 **AC**
 - Each item has an id in xsync's backlog and a consumer story here that flips from workaround to native when it lands. For the two capabilities whose baseline stories are already complete but which have no distinct open provider ID, `integration.md` keeps the exact missing-ID follow-up caveat; E17-S2 remains open until xsync assigns and scopes both follow-ups.
+
+**Blocker:** xsync has not assigned or scoped distinct follow-up IDs for
+server-side recursive delete/parent-creating `mkdir`, or for a paged
+`read_dir_path` overflow API. Until it does, xsaber retains the client-side
+walk/one-level-mkdir and directory-handle fallbacks documented in
+`integration.md`.
 
 #### E17-S3 — Shared-crate decision
 xsaber is the third GUI, the roadmap's trigger for considering a shared crate

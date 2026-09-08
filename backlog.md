@@ -7,8 +7,8 @@ criteria remain in [`plan.md`](plan.md).
 ## Status snapshot
 
 - **Milestone:** M0 — E0 complete; E1 design-system work is in progress.
-- **Branch:** published `xcalibur` branch at `9ccd066` (E1 theme foundation); origin is `https://github.com/s4njee/xsaber`. Root registration and pinning remain `E17-S1` work.
-- **Last 5 commits:** `9ccd066` Add E1 theme foundation; `80d4cce` Bundle E1 font assets; `33ff656` Record E0 completion evidence; `85876b3` Scope formatting check to xsaber; `94d66ed` Scaffold xsaber workspace.
+- **Branch:** published `xcalibur` branch at `fa13824` (E1 progress record); origin is `https://github.com/s4njee/xsaber`. Root registration and pinning remain `E17-S1` work.
+- **Last 5 commits:** `fa13824` Record E1 progress; `9ccd066` Add E1 theme foundation; `80d4cce` Bundle E1 font assets; `33ff656` Record E0 completion evidence; `85876b3` Scope formatting check to xsaber.
 - **Test gate:** the clean recursive suite checkout at `/tmp/xsaber-e0-clean.83Ddis` built and tested xsaber against the published suite xsync pin, with 4 engine tests passing. Local build/test, workspace-scoped fmt, clippy, `cargo deny check`, `cargo audit`, release-mode app build, `actionlint`, and `git diff --check` pass on 2026-09-08. GitHub CI run [34194549604](https://github.com/s4njee/xsaber/actions/runs/34194549604) passed its macOS and Ubuntu Rust jobs, supply-chain job, and macOS/Ubuntu release app builds; the Windows job reported the known `xsync-core` `rustix::fs` failure and is allowed by E0 until `E16-S4`. The package job is a release-mode app compilation, not native bundle verification.
 - **Not gated:** `E17-S1` submodule registration, `.gitmodules`, and the superproject SHA pin; native bundles remain E16 work and native Windows packaging remains `E16-S4`.
 
@@ -46,6 +46,29 @@ pin.
 | `E1-S4` Density primitives | Planned |
 | `E1-S5` Window chrome and menus | Planned |
 | `E1-S6` Kitchen-sink example app | Planned |
+
+### Completed E1 slices
+
+- [x] `E1-S1` theme asset and app-owned design tokens — `9ccd066`; the
+  focused `ThemeSet` round-trip and token tests pass.
+- [x] `E1-S2` licensed local font assets and provenance — `80d4cce`; Barlow
+  400/500/600/700 and IBM Plex Mono 400 plus their OFL texts are bundled.
+
+These checked slices do not close their parent stories: the unfulfilled ACs
+remain in the status table above and in `plan.md`.
+
+### Current blockers
+
+- `E1-S2` cannot close its bundle-shipping AC until `E16` supplies native
+  bundles. Runtime `AssetSource` and font-registration work is still local
+  implementation work, not an external blocker.
+- `E17-S2` is blocked on xsync assigning and scoping two missing provider
+  follow-up IDs: server-side recursive delete/parent-creating mkdir, and a
+  paged overflow alternative for `read_dir_path`. The exact consumer
+  workarounds are recorded in [`integration.md`](integration.md).
+- `E16-S4` is blocked by the known Windows provider failure: `xsync-core`
+  imports Unix-only `rustix::fs`. The E0 CI job reports this failure as
+  allowed; it must be resolved before the Windows release AC can close.
 
 ## Later story identity
 
